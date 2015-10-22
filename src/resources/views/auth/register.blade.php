@@ -28,14 +28,14 @@
                 </div>
                 <div class="row">
                     <div class="medium-4 medium-offset-2 large-3 large-offset-3 columns">
-                        <label>Password (<a href="/help/good-passwords">what's a good password?</a>)
+                        <label>Password
                             <input type="password" id="password" name="password" placeholder="Choose something long" required />
                         </label>
                         <small class="error">We need a password to protect your account.</small>
                     </div>
                     <div class="medium-4 large-3 columns end">
                         <label>Repeat password
-                            <input type="password" placeholder="Just in case you typo'd" required data-equalto="password" />
+                            <input type="password" name="password_confirmation" placeholder="Just in case you typo'd" required data-equalto="password" />
                         </label>
                         <small class="error">Your password doesn't seem to match.</small>
                     </div>
