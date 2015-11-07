@@ -1,6 +1,6 @@
 {
     "name": "hamjoint/mustard-auth",
-    "description": "User authentication for the Mustard marketplace platform",
+    "description": "User authentication for the Mustard marketplace platform.",
     "keywords": ["mustard", "authentication"],
     "license": "GPL-3.0",
     "authors": [
