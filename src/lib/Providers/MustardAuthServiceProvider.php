@@ -32,6 +32,8 @@ class MustardAuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        define('MUSTARD_AUTH', true);
+
         // Include routes
         if (!$this->app->routesAreCached()) {
             require __DIR__ . '/../../includes/routes.php';
