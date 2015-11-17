@@ -9,6 +9,9 @@
         <div class="row">
             <div class="large-12 columns">
                 <h1>Log in</h1>
+                @if (env('MUSTARD_DEMO'), false)
+                    <p>Mustard is in demo mode. Try logging in as "{{ Hamjoint\Mustard\User::first()->email }}" using the password "password".</p>
+                @endif
                 <form method="post" action="/auth/login" data-abide="true">
                     {!! csrf_field() !!}
                     <div class="row">
