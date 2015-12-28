@@ -19,7 +19,6 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-Route::group(['prefix' => env('MUSTARD_BASE', ''), 'namespace' => 'Hamjoint\Mustard\Auth\Http\Controllers'], function()
-{
+Route::group(['prefix' => env('MUSTARD_BASE', ''), 'namespace' => 'Hamjoint\Mustard\Auth\Http\Controllers'], function () {
     Route::controller('auth', 'AuthController');
 });

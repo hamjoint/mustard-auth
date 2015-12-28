@@ -19,8 +19,8 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class MustardAuthTables extends Migration
 {
@@ -31,8 +31,7 @@ class MustardAuthTables extends Migration
      */
     public function up()
     {
-        Schema::create('email_tokens', function(Blueprint $table)
-        {
+        Schema::create('email_tokens', function (Blueprint $table) {
             $table->integer('email_token_id', true)->unsigned();
             $table->string('email', 64);
             $table->string('token', 64);
