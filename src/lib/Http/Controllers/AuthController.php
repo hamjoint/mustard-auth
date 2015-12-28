@@ -23,8 +23,8 @@ namespace Hamjoint\Mustard\Auth\Http\Controllers;
 
 use Hamjoint\Mustard\Http\Controllers\Controller;
 use Hamjoint\Mustard\User;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
 
 class AuthController extends Controller
@@ -77,12 +77,13 @@ class AuthController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'email' => 'required|email|unique:users',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8',
             'username' => 'min:3|regex:/^[a-z0-9\-_]+$/i|unique:users',
         ]);
@@ -92,6 +93,7 @@ class AuthController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param array $data
+     *
      * @return \Hamjoint\Mustard\User
      */
     protected function create(array $data)
@@ -102,7 +104,7 @@ class AuthController extends Controller
             'Welcome to Hamjoint - verify your email address',
             'emails.account.verify',
             [
-                'key' => $user->addVerification(),
+                'key'         => $user->addVerification(),
                 'new_account' => true,
             ]
         );
