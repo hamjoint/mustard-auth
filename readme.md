@@ -1,5 +1,12 @@
 ## Mustard Authentication module
 
+[![StyleCI](https://styleci.io/repos/44763035/shield?style=flat)](https://styleci.io/repos/44763035)
+[![Build Status](https://travis-ci.org/hamjoint/mustard-auth.svg)](https://travis-ci.org/hamjoint/mustard-auth)
+[![Total Downloads](https://poser.pugx.org/hamjoint/mustard-auth/d/total.svg)](https://packagist.org/packages/hamjoint/mustard-auth)
+[![Latest Stable Version](https://poser.pugx.org/hamjoint/mustard-auth/v/stable.svg)](https://packagist.org/packages/hamjoint/mustard-auth)
+[![Latest Unstable Version](https://poser.pugx.org/hamjoint/mustard-auth/v/unstable.svg)](https://packagist.org/packages/hamjoint/mustard-auth)
+[![License](https://poser.pugx.org/hamjoint/mustard-auth/license.svg)](https://packagist.org/packages/hamjoint/mustard-auth)
+
 User authentication for [Mustard](http://withmustard.org/), the open source marketplace platform.
 
 ### Installation
