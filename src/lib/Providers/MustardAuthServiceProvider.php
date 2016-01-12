@@ -21,7 +21,10 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Hamjoint\Mustard\Auth\Providers;
 
+use Hamjoint\Mustard\Auth\Http\Middleware\RedirectIfAuthenticated;
+use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Support\ServiceProvider;
+use LaravelVerifyEmails\Auth\Middleware\AuthenticateAndVerifyEmail;
 
 class MustardAuthServiceProvider extends ServiceProvider
 {
@@ -30,7 +33,7 @@ class MustardAuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(GateContract $gate)
     {
         define('MUSTARD_AUTH', true);
 
@@ -43,8 +46,23 @@ class MustardAuthServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'mustard');
 
         // Register middleware
-        $this->app->router->middleware('auth', \Hamjoint\Mustard\Auth\Http\Middleware\Authenticate::class);
-        $this->app->router->middleware('guest', \Hamjoint\Mustard\Auth\Http\Middleware\RedirectIfAuthenticated::class);
+        $this->app->router->middleware('auth', AuthenticateAndVerifyEmail::class);
+        $this->app->router->middleware('guest', RedirectIfAuthenticated::class);
+
+        // Register LaravelVerifyEmails service provider
+        $this->app->register('LaravelVerifyEmails\Auth\VerifyEmails\VerifyEmailServiceProvider');
+
+        // Publish migrations
+        $this->publishes([
+            __DIR__ . '/../../database/migrations/' => database_path('migrations')
+        ], 'migrations');
+
+        // Register authorisation policies
+        $gate->define('end-item', function ($user, $item) {
+            return $user->getKey() === $item->userId;
+        });
+
+        // @TODO add more authorisation policies
     }
 
     /**
