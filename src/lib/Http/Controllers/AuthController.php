@@ -31,7 +31,12 @@ class AuthController extends Controller
 {
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $redirectPath = '/';
+    /**
+     * Where to redirect users after login / registration.
+     *
+     * @var $redirectTo
+     */
+    public $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -40,7 +45,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
@@ -48,7 +53,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getLogin()
+    public function showLoginForm()
     {
         return view('mustard::auth.login');
     }
@@ -58,7 +63,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getRegister()
+    public function showRegistrationForm()
     {
         return view('mustard::auth.register');
     }
@@ -99,15 +104,6 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $user = User::register($data['email'], $data['password'], $data['username']);
-
-        $user->sendEmail(
-            'Welcome to Hamjoint - verify your email address',
-            'emails.account.verify',
-            [
-                'key'         => $user->addVerification(),
-                'new_account' => true,
-            ]
-        );
 
         return $user;
     }

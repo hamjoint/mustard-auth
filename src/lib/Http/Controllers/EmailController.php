@@ -22,41 +22,26 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 namespace Hamjoint\Mustard\Auth\Http\Controllers;
 
 use Hamjoint\Mustard\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+use LaravelVerifyEmails\Foundation\Auth\VerifiesEmails;
 
-class PasswordController extends Controller
+class EmailController extends Controller
 {
-    use ResetsPasswords;
+    use VerifiesEmails;
 
     /**
-     * Path to redirect to after a reset.
+     * Path to redirect to after verification.
      *
      * @var $redirectTo
      */
     public $redirectTo = '/';
 
     /**
-     * Display the form to request a password reset link.
+     * Display a message about the user's unverified email address.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getEmail()
+    public function getUnverified()
     {
-        return view('mustard::auth.password');
-    }
-
-    /**
-     * Display the password reset view for the given token.
-     *
-     * @param  string  $token
-     * @return \Illuminate\Http\Response
-     */
-    public function getReset($token = null)
-    {
-        if (is_null($token)) {
-            throw new NotFoundHttpException;
-        }
-
-        return view('mustard::auth.reset')->with('token', $token);
+        return view('mustard::auth.unverified-email');
     }
 }
