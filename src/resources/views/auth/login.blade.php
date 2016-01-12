@@ -12,7 +12,7 @@
                 @if (!app()->environment('production'))
                     <p>Mustard is in demo mode. Try logging in as "{{ Hamjoint\Mustard\User::first()->email }}" using the password "password".</p>
                 @endif
-                <form method="post" action="/auth/login" data-abide="true">
+                <form method="post" action="/login" data-abide="true">
                     {!! csrf_field() !!}
                     <div class="row">
                         <div class="medium-6 medium-offset-3 large-4 large-offset-4 columns">

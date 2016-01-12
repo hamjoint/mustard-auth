@@ -8,7 +8,7 @@
     <div class="row">
         <div class="large-12 columns">
             <h1>Register</h1>
-            <form method="post" action="/auth/register" data-abide="true">
+            <form method="post" action="/register" data-abide="true">
                 {!! csrf_field() !!}
                 <div class="row">
                     <div class="medium-8 medium-offset-2 large-6 large-offset-3 columns">
