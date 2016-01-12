@@ -19,6 +19,25 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-Route::group(['prefix' => env('MUSTARD_BASE', ''), 'namespace' => 'Hamjoint\Mustard\Auth\Http\Controllers'], function () {
-    Route::controller('auth', 'AuthController');
+Route::group([
+    'middleware' => 'web',
+    'prefix' => env('MUSTARD_BASE', ''),
+    'namespace' => 'Hamjoint\Mustard\Auth\Http\Controllers'
+], function () {
+    Route::get('login', 'AuthController@showLoginForm');
+    Route::post('login', 'AuthController@login');
+    Route::get('logout', 'AuthController@logout');
+
+    Route::get('register', 'AuthController@showRegistrationForm');
+    Route::post('register', 'AuthController@register');
+
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('password/reset/{token?}', 'PasswordController@showResetForm');
+        Route::post('password/email', 'PasswordController@sendResetLinkEmail');
+        Route::post('password/reset', 'PasswordController@reset');
+    });
+
+    Route::get('email/unverified', 'EmailController@getUnverified');
+    Route::post('email/resend', 'EmailController@postResend');
+    Route::get('email/verify/{token}', 'EmailController@getVerify');
 });
