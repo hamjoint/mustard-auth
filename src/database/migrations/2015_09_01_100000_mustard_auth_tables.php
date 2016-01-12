@@ -40,6 +40,10 @@ class MustardAuthTables extends Migration
 
             $table->index(['email', 'token']);
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('verified');
+        });
     }
 
     /**
@@ -49,6 +53,10 @@ class MustardAuthTables extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('verified');
+        });
+
         Schema::drop('email_tokens');
     }
 }
