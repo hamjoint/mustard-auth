@@ -37,7 +37,7 @@ Route::group([
         Route::post('password/reset', 'PasswordController@reset');
     });
 
-    Route::get('email/unverified', 'EmailController@getUnverified');
-    Route::post('email/resend', 'EmailController@postResend');
-    Route::get('email/verify/{token}', 'EmailController@getVerify');
+    Route::get('email/unverified', 'EmailController@showUnverifiedForm');
+    Route::post('email/resend', 'EmailController@resend');
+    Route::get('email/verify/{token}', 'EmailController@verify');
 });

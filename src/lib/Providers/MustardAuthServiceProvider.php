@@ -45,6 +45,9 @@ class MustardAuthServiceProvider extends ServiceProvider
         // Load views
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'mustard');
 
+        // Load translations
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'mustard-auth');
+
         // Register middleware
         $this->app->router->middleware('auth', AuthenticateAndVerifyEmail::class);
         $this->app->router->middleware('guest', RedirectIfAuthenticated::class);
