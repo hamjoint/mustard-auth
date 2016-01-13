@@ -40,24 +40,12 @@ class PasswordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getEmail()
-    {
-        return view('mustard::auth.password');
-    }
-
-    /**
-     * Display the password reset view for the given token.
-     *
-     * @param string $token
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getReset($token = null)
+    public function showResetForm($token = null)
     {
         if (is_null($token)) {
-            throw new NotFoundHttpException();
+            return view('mustard::auth.passwords.email');
         }
 
-        return view('mustard::auth.reset')->with('token', $token);
+        return view('mustard::auth.passwords.reset')->with('token', $token);
     }
 }

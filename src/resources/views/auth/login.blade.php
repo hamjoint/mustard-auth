@@ -43,7 +43,7 @@
                     </div>
                     <div class="row">
                         <div class="medium-6 medium-offset-3 large-4 large-offset-4 columns">
-                            <a class="button small info expand radius" href="/password/email">Forgotten your password?</a>
+                            <a class="button small info expand radius" href="/password/reset">Forgotten your password?</a>
                         </div>
                     </div>
                 </form>

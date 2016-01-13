@@ -30,8 +30,14 @@ trait VerifiesEmails
     {
         $user = Auth::user();
 
-        if ($user->getVerified()) {
+        if ($user->isVerified()) {
             return redirect()->back();
+        }
+
+        if ($request->input('email') != $user->email) {
+            $user->email = $request->input('email');
+
+            $user->save();
         }
 
         $response = VerifyEmail::sendVerificationLink($user, function (Message $message) use ($user) {
