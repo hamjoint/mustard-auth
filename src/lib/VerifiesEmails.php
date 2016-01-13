@@ -16,7 +16,7 @@ trait VerifiesEmails
      */
     public function showUnverifiedForm()
     {
-        return view('mustard::auth.unverified-email');
+        return view('mustard::auth.verify-emails.unverified');
     }
 
     /**
