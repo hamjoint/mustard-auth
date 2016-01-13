@@ -22,7 +22,8 @@ trait VerifiesEmails
     /**
      * Send another verification email.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function resend(Request $request)
@@ -49,7 +50,8 @@ trait VerifiesEmails
     /**
      * Attempt to verify a user.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return \Illuminate\Http\Response
      */
     public function verify($token)
