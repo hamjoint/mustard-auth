@@ -14,7 +14,7 @@ return [
     */
 
     'verified' => 'Your email address has been verified!',
-    'sent' => 'We have emailed your email verification link!',
-    'token' => 'This email verification token is invalid.',
+    'sent'     => 'We have emailed your email verification link!',
+    'token'    => 'This email verification token is invalid.',
 
 ];

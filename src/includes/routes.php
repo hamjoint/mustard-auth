@@ -21,8 +21,8 @@ along with Mustard.  If not, see <http://www.gnu.org/licenses/>.
 
 Route::group([
     'middleware' => 'web',
-    'prefix' => env('MUSTARD_BASE', ''),
-    'namespace' => 'Hamjoint\Mustard\Auth\Http\Controllers'
+    'prefix'     => env('MUSTARD_BASE', ''),
+    'namespace'  => 'Hamjoint\Mustard\Auth\Http\Controllers',
 ], function () {
     Route::get('login', 'AuthController@showLoginForm');
     Route::post('login', 'AuthController@login');
